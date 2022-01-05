@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minilibx_cal.c                                     :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkano <tkano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/27 16:21:59 by tkano             #+#    #+#             */
-/*   Updated: 2021/12/27 16:21:59 by tkano            ###   ########.fr       */
+/*   Created: 2020/11/11 23:20:01 by tkano             #+#    #+#             */
+/*   Updated: 2021/05/10 00:13:41 by tkano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "libft.h"
 
-void	set_all_mlx_hook(t_vars *vars)
+int	ft_tolower(int c)
 {
-	mlx_key_hook(vars->win, control_key_code, vars);
-	mlx_mouse_hook(vars->win, control_mouse_hook, vars);
+	if (c >= 65 && c <= 90)
+		c += 32;
+	return (c);
 }

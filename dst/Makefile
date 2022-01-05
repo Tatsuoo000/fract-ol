@@ -1,29 +1,22 @@
-SRCDIR		= ./srcs/
-SRCNAME		= check_closed_map.c control_key.c cub3d.c draw_splite.c \
-			  draw_to_image.c read_conf_file.c read_map.c read_size_tex_color.c \
-		 		save_bmp.c get_next_line.c utils.c other.c
-SRCS		= $(addprefix $(SRCDIR), $(SRCNAME))
-OBJS		= $(SRCS:.c=.o)
-INCLUDE		= -I./includes/
-NAME		= fractol
-CC			= gcc
-CFLAGS		= -Wall -Wextra -Werror
-RM			= rm -f
-LIBFTDIR	= ./libft
-LIBFTNAME 	= libft.a
-LIBFT		= $(LIBFTDIR)/$(LIBFTNAME)
-UNAME 		= $(shell uname)
-ifeq ($(UNAME),Linux)
-	LIBMLXDIR	= ./minilibx-linux
-	LIBMLXNAME	= libmlx_Linux.a
-	LIBMLX		= $(LIBMLXDIR)/$(LIBMLXNAME)
-	LINK		= -lXext -lX11 -lm
-else
-	LIBMLXDIR	= ./minilibx_mms_20200219
-	LIBMLXNAME	= libmlx.dylib
-	LIBMLX		= $(LIBMLXDIR)/$(LIBMLXNAME)
-	LINK		= 
-endif
+NAME	= fractol
+SRCDIR	= ./srcs/
+SRCNAME	= main.c
+
+SRCS	= $(addprefix $(SRCDIR), $(SRCNAME))
+OBJS	= $(SRCS:.c=.o)
+
+INCLUDE = -I./includes
+CC		= gcc
+CFLAGS	= -Wall -Wextra -Werror
+RM		= rm -f
+LIBDIR	= ./libft/
+LIBFT	= libft.a
+LIBFTA	= $(LIBDIR)$(LIBFT)
+
+LIBMLXDIR	= ./minilibx-linux/
+LIBMLXNAME	= libmlx_Linux.a
+LIBMLX		= $(LIBMLXDIR)$(LIBMLXNAME)
+LINK		= -L/usr.lib -lXext -lX11 -lm
 
 all		:	$(NAME)
 
@@ -31,27 +24,26 @@ all		:	$(NAME)
 			if [ ! -d ./minilibx-linux ]; then git clone https://github.com/42Paris/minilibx-linux.git; fi
 			$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $(<:.c=.o)
 
-$(NAME)	:	$(LIBFTNAME) $(LIBMLXNAME) $(OBJS)
-			cp $(LIBMLX) ./
-			$(CC) $(CFLAGS) $(INCLUDE) $(OBJS) $(LIBFT) $(LIBMLXNAME) $(LINK) -o $(NAME)
+$(NAME)	:	$(OBJS) $(LIBFTA) $(LIBMLX)
+			$(CC) $(CFLAGS) $(OBJS) $(LIBFTA) $(LIBMLX) $(LINK) -o $(NAME)
 
-$(LIBFTNAME):
-			make -C $(LIBFTDIR)
+$(LIBFTA)	:
+			make -C $(LIBDIR)
 
-$(LIBMLXNAME):
+$(LIBMLX):
 			if [ ! -d ./minilibx-linux ]; then git clone https://github.com/42Paris/minilibx-linux.git; fi
 			make -C $(LIBMLXDIR)
 
 clean	:
 			$(RM) $(OBJS)
-			make clean -C $(LIBFTDIR)
-			make clean -C $(LIBMLXDIR)
+			$(RM) $(LIBMLXNAME)
+			make clean -C $(LIBDIR)
 
 fclean	:	clean
 			$(RM) $(NAME)
 			$(RM) $(LIBMLXNAME)
 			$(RM) capture.bmp
-			make fclean -C $(LIBFTDIR)
+			make fclean -C $(LIBDIR)
 
 re		:	fclean all
 
