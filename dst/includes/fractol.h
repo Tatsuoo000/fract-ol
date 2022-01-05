@@ -13,11 +13,7 @@
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# if __linux__
 #  include "../minilibx-linux/mlx.h"
-# else
-#  include "../minilibx_mms_20200219/mlx.h"
-# endif
 # include "../libft/libft.h"
 # include <unistd.h>
 # include <math.h>
@@ -29,7 +25,6 @@
 # define SUCCESS 0
 # define ERROR -1
 
-# if __linux__
 #  define ESC_KEY 65307
 #  define LEFT_KEY 65361
 #  define RIGHT_KEY 65363
@@ -38,12 +33,6 @@
 #  define ZERO_KEY 48
 #  define SCROLL_UP 4
 #  define SCROLL_DOWN 5
-
-# else
-#  define ESC_KEY 53
-#  define LEFT_KEY 123
-#  define RIGHT_KEY 124
-# endif
 
 # define SLIDE_STEP 20
 # define SCREEN_X 500
@@ -91,3 +80,5 @@ typedef struct s_vars {
 	double		*param;
 	int			max_iter;
 }				t_vars;
+
+#endif
