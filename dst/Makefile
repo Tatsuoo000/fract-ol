@@ -1,6 +1,11 @@
 NAME	= fractol
 SRCDIR	= ./srcs/
-SRCNAME	= main.c
+SRCNAME	= 	main.c\
+			arg_parse.c\
+			exit.c\
+			fractol.c\
+			init.c\
+			vector.c
 
 SRCS	= $(addprefix $(SRCDIR), $(SRCNAME))
 OBJS	= $(SRCS:.c=.o)

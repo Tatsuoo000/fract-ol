@@ -77,8 +77,16 @@ typedef struct s_vars {
 	int			(*func)(struct s_vars *, t_vec *);
 	char		*figure_name;
 	t_win		window;
-	double		*param;
+	double		*params;
 	int			max_iter;
 }				t_vars;
+
+void    arg_parse(t_vars *vars, int argc, char **argv);
+int		fractol_mandelbrot(t_vars *vars, t_vec *vec);
+void	put_help(void);
+int		put_error(char *str);
+void    vars_init(t_vars *vars);
+void    vec_set(t_vec *vec, double x, double y);
+int		fractol_mandelbrot(t_vars *vars, t_vec *vec);
 
 #endif
