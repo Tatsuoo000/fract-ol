@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkano <tkano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/06 10:24:29 by tkano             #+#    #+#             */
-/*   Updated: 2022/01/06 10:24:29 by tkano            ###   ########.fr       */
+/*   Created: 2021/12/27 12:08:05 by tkano             #+#    #+#             */
+/*   Updated: 2021/12/27 12:08:05 by tkano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ void    set_figure_name(t_vars *vars, char *argv)
         put_help();
 }
 
-void    set_params(t_vars *vars, int argc, char **argv)
-{
+//void    set_params(t_vars *vars, int argc, char **argv)
+//{
 
-}
+//}
 
 void    arg_parse(t_vars *vars, int argc, char **argv)
 {

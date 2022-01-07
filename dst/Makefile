@@ -5,7 +5,10 @@ SRCNAME	= 	main.c\
 			exit.c\
 			fractol.c\
 			init.c\
-			vector.c
+			vector.c\
+			color.c\
+			draw_to_window.c\
+			trgb_to_int.c
 
 SRCS	= $(addprefix $(SRCDIR), $(SRCNAME))
 OBJS	= $(SRCS:.c=.o)

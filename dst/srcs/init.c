@@ -29,7 +29,7 @@ void	vars_data_init(t_vars *vars)
 
 	data = &(vars->data);
 	data->img = mlx_new_image(vars->mlx, vars->x, vars->y);
-	if (data->img == NULL);
+	if (data->img == NULL)
 		put_error("mlx_new_image error");
 	data->addr = mlx_get_data_addr(data->img, \
 		&(data->bits_per_pixel), &(data->line_length), \

@@ -88,5 +88,13 @@ int		put_error(char *str);
 void    vars_init(t_vars *vars);
 void    vec_set(t_vec *vec, double x, double y);
 int		fractol_mandelbrot(t_vars *vars, t_vec *vec);
+int		draw_image(t_vars *vars);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+int		create_trgb(int t, int r, int g, int b);
+int		color_add(int trgb, int value);
+int		trgb_to_t_int(int trgb);
+int		trgb_to_r_int(int trgb);
+int		trgb_to_g_int(int trgb);
+int		trgb_to_b_int(int trgb);
 
 #endif
