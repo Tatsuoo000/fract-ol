@@ -12,8 +12,13 @@
 
 #include "fractol.h"
 
-void    vec_set(t_vec *vec, double x, double y)
+void	vec_add(t_vec *vec1, t_vec *vec2, t_vec *vec_dst)
 {
-    vec->x = x;
+	vec_set(vec_dst, vec1->x + vec2->x, vec1->y + vec2->y);
+}
+
+void	vec_set(t_vec *vec, double x, double y)
+{
+	vec->x = x;
 	vec->y = y;
 }

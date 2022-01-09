@@ -35,5 +35,7 @@ int	main(int argc, char **argv)
 	arg_parse(&vars, argc, argv);
 	vars_init(&vars);
 	put_image_to_window(&vars);
+	mlx_key_hook(vars.win, control_key_hook, &vars);
+	mlx_mouse_hook(vars.win, control_mouse_hook, &vars);
 	mlx_loop(vars.mlx);
 }

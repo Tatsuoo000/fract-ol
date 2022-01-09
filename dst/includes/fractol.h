@@ -13,7 +13,7 @@
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-#  include "../minilibx-linux/mlx.h"
+# include "../minilibx-linux/mlx.h"
 # include "../libft/libft.h"
 # include <unistd.h>
 # include <math.h>
@@ -25,14 +25,14 @@
 # define SUCCESS 0
 # define ERROR -1
 
-#  define ESC_KEY 65307
-#  define LEFT_KEY 65361
-#  define RIGHT_KEY 65363
-#  define UP_KEY 65362
-#  define DOWN_KEY 65364
-#  define ZERO_KEY 48
-#  define SCROLL_UP 4
-#  define SCROLL_DOWN 5
+# define ESC_KEY 65307
+# define LEFT_KEY 65361
+# define RIGHT_KEY 65363
+# define UP_KEY 65362
+# define DOWN_KEY 65364
+# define ONE_KEY 49
+# define SCROLL_UP 4
+# define SCROLL_DOWN 5
 
 # define SLIDE_STEP 20
 # define SCREEN_X 500
@@ -81,12 +81,12 @@ typedef struct s_vars {
 	int			max_iter;
 }				t_vars;
 
-void    arg_parse(t_vars *vars, int argc, char **argv);
+void	arg_parse(t_vars *vars, int argc, char **argv);
 int		fractol_mandelbrot(t_vars *vars, t_vec *vec);
 void	put_help(void);
 int		put_error(char *str);
-void    vars_init(t_vars *vars);
-void    vec_set(t_vec *vec, double x, double y);
+void	vars_init(t_vars *vars);
+void	vec_set(t_vec *vec, double x, double y);
 int		fractol_mandelbrot(t_vars *vars, t_vec *vec);
 int		draw_image(t_vars *vars);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
@@ -96,5 +96,15 @@ int		trgb_to_t_int(int trgb);
 int		trgb_to_r_int(int trgb);
 int		trgb_to_g_int(int trgb);
 int		trgb_to_b_int(int trgb);
+void	put_image_to_window(t_vars *vars);
+int		control_key_hook(int key, t_vars *vars);
+int		control_mouse_hook(int button, int x, int y, t_vars *vars);
+void	zoom_window(t_vars *vars, int x, int y, double r);
+void	clear_image(t_vars *vars);
+void	pos_vec_set(t_vars *vars, int x, int y, t_vec *dst);
+void	slide_window(t_vars *vars, int x, int y);
+void	vec_add(t_vec *vec1, t_vec *vec2, t_vec *vec_dst);
+int		parse_num(char *s, double *v);
+int		fractol_julia(t_vars *vars, t_vec *vec);
 
 #endif

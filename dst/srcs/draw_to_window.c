@@ -14,7 +14,7 @@
 
 void	pos_vec_set(t_vars *vars, int x, int y, t_vec *dst)
 {
-	vec_set(dst, vars->window.left_top.x + x *vars->window.step.x, \
+	vec_set(dst, vars->window.left_top.x + x * vars->window.step.x, \
 			vars->window.left_top.y + y * vars->window.step.y);
 }
 

@@ -8,7 +8,10 @@ SRCNAME	= 	main.c\
 			vector.c\
 			color.c\
 			draw_to_window.c\
-			trgb_to_int.c
+			trgb_to_int.c\
+			my_mlx_hook.c\
+			zoom_window.c\
+			parse_num.c
 
 SRCS	= $(addprefix $(SRCDIR), $(SRCNAME))
 OBJS	= $(SRCS:.c=.o)
